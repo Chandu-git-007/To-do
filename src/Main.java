@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    private static final ArrayList<String> tasks = new ArrayList<>();
+    private static ArrayList<String> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -22,8 +22,9 @@ public class Main {
             switch (choice) {
                 case 1 -> addTask(scanner);
                 case 2 -> viewTasks();
-                case 3 -> deleteTask(scanner);
-                case 4 -> System.out.println("Exiting...");
+                case 3 -> editTask(scanner);
+                case 4 -> deleteTask(scanner);
+                case 5 -> System.out.println("Exiting...");
                 default -> System.out.println("Invalid choice!");
             }
         } while (choice != 4);
@@ -57,6 +58,20 @@ public class Main {
             if (index > 0 && index <= tasks.size()) {
                 tasks.remove(index - 1);
                 System.out.println("🗑️ Task deleted!");
+            } else {
+                System.out.println("Invalid task number!");
+            }
+        }
+    }
+    private static void editTask(Scanner scanner) {
+        viewTasks();
+        if (!tasks.isEmpty()) {
+            System.out.print("Enter task number to edit: ");
+            int index = scanner.nextInt();
+            if (index > 0 && index <= tasks.size()) {
+                System.out.print("Enter task: ");
+                tasks.set(index - 1, scanner.nextLine());
+                System.out.println("Task edited!");
             } else {
                 System.out.println("Invalid task number!");
             }
