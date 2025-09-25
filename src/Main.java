@@ -13,8 +13,9 @@ public class Main {
             System.out.println("\n===== TO-DO LIST =====");
             System.out.println("1. Add Task");
             System.out.println("2. View Tasks");
-            System.out.println("3. Delete Task");
-            System.out.println("4. Exit");
+            System.out.println("3. Edit Tasks");
+            System.out.println("4. Delete Task");
+            System.out.println("5. Exit");
             System.out.print("Enter choice: ");
             choice = scanner.nextInt();
             scanner.nextLine(); // consume newline
