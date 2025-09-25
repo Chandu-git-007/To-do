@@ -8,6 +8,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
+
         do {
             System.out.println("\n===== TO-DO LIST =====");
             System.out.println("1. Add Task");
