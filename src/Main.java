@@ -15,7 +15,8 @@ public class Main {
             System.out.println("2. View Tasks");
             System.out.println("3. Edit Tasks");
             System.out.println("4. Delete Task");
-            System.out.println("5. Exit");
+            System.out.println("5. Delete All Tasks");
+            System.out.println("6. Exit");
             System.out.print("Enter choice: ");
             choice = scanner.nextInt();
             scanner.nextLine(); // consume newline
@@ -25,10 +26,11 @@ public class Main {
                 case 2 -> viewTasks();
                 case 3 -> editTask(scanner);
                 case 4 -> deleteTask(scanner);
-                case 5 -> System.out.println("Exiting...");
+                case 5 -> deleteAllTasks(scanner);
+                case 6 -> System.out.println("Exiting...");
                 default -> System.out.println("Invalid choice!");
             }
-        } while (choice != 4);
+        } while (choice != 6);
 
         scanner.close();
     }
@@ -64,6 +66,23 @@ public class Main {
             }
         }
     }
+
+    private static void deleteAllTasks(Scanner scanner) {
+        if (tasks.isEmpty()) {
+            System.out.println("No tasks to delete!");
+            return;
+        }
+
+        System.out.print("Delete all tasks? (y/n): ");
+        String confirmation = scanner.nextLine().trim();
+        if (confirmation.equalsIgnoreCase("y")) {
+            tasks.clear();
+            System.out.println("All tasks deleted!");
+        } else {
+            System.out.println("Delete all tasks cancelled.");
+        }
+    }
+
     private static void editTask(Scanner scanner) {
         viewTasks();
         if (!tasks.isEmpty()) {
